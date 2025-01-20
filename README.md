@@ -82,14 +82,18 @@ Using **environment variables** is often the simplest and most cross-platform ap
 - Regularly review the project's security configuration.
 - Rotate credentials in the event of a potential security incident.
 
-################################
 # Secure Configuration for `gradle.properties`
+
+---
+
+---
+
+---
 
 In diesem Projekt wird empfohlen, sensible Informationen wie Passwörter oder Tokens nicht direkt in der `gradle.properties`-Datei zu speichern. 
 
 Stattdessen sollten sicherere Methoden wie Umgebungsvariablen oder separate, nicht versionierte Konfigurationsdateien verwendet werden.
 
----
 
 ## Methoden zur Sicherung sensibler Daten
 
