@@ -1,34 +1,40 @@
-# Coordinator Nodes im ELK-Stack
+# Coordinator nodes in the ELK stack 
 
-Ein **Coordinator Node** in einem ELK-Stack (Elasticsearch, Logstash, Kibana) ist ein spezieller Knoten in Elasticsearch, der als Vermittler für Such- und Indexierungsanfragen dient. Seine Hauptaufgabe besteht darin, Anfragen zu koordinieren, ohne selbst Daten zu speichern oder zu verarbeiten. Nachfolgend werden die Aufgaben und Einsatzszenarien eines Coordinator Nodes detailliert beschrieben.
+A coordinator node in an ELK (Elasticsearch, Logstash, Kibana) stack is a special node in Elasticsearch that serves as an intermediary for search and indexing requests. 
+Its main task is to coordinate requests without storing or processing data itself. 
+The tasks and application scenarios of a coordinator node are described in detail below. 
 
-## Hauptaufgaben
+## Main tasks 
 
-### 1. **Anfragen verarbeiten und verteilen**
-- Der Coordinator Node empfängt **Suchanfragen** und **Schreibanfragen** von Clients.
-- Er analysiert die Anfrage, teilt sie in kleinere Aufgaben auf und leitet diese an die entsprechenden Datenknoten (Data Nodes) weiter, die die eigentlichen Daten speichern.
+### 1. Process and distribute requests 
+The Coordinator Node receives search requests and write requests from clients. 
+It analyzes the request, divides it into smaller tasks and forwards them to the corresponding data nodes, which store the actual data. 
 
-### 2. **Aggregation von Ergebnissen**
-- Bei **Suchanfragen** sammelt der Coordinator Node die Teilergebnisse von verschiedenen Datenknoten ein und aggregiert diese zu einem Gesamtergebnis, das an den Client zurückgegeben wird.
+### 2. Aggregation of results 
+For search queries, the coordinator node collects the partial results from various data nodes and aggregates them into an overall result that is returned to the client. 
 
-### 3. **Ressourcenoptimierung**
-- Coordinator Nodes führen keine eigene Last für Speicherung oder Verarbeitung aus, was bedeutet, dass sie ausschließlich für die Verteilung und Koordinierung von Anfragen genutzt werden. Dadurch wird der Cluster entlastet und Anfragen können schneller bearbeitet werden.
+### 3. Resource optimization 
+There are no coordinator nodes own load for storage or processing, which means that they are used exclusively for the distribution and coordination of requests. 
+This reduces the load on the cluster and requests can be processed more quickly. 
 
-### 4. **Load Balancing**
-- Sie verteilen Anfragen gleichmäßig über den gesamten Cluster und verhindern so, dass einzelne Datenknoten überlastet werden.
+### 4. Load Balancing 
+They distribute requests evenly across the entire cluster, preventing individual data nodes from becoming overloaded. 
 
-### 5. **Keine Datenhaltung**
-- Coordinator Nodes haben keine eigenen Shards und speichern keine Daten. Dadurch können sie sich auf die Verarbeitung von Anfragen und die Koordination konzentrieren.
+### 5. No data storage 
+Coordinator nodes do not have their own shards and do not store any data. This allows them to focus on processing requests and coordination. 
 
-## Typische Einsatzszenarien
+## Typical usage scenarios 
 
-- **Große Cluster**: In großen Elasticsearch-Clustern mit vielen Datenknoten helfen Coordinator Nodes dabei, die Last effizient zu verteilen.
-- **Optimierung von Suchanfragen**: Sie verbessern die Antwortzeiten bei komplexen Suchanfragen durch die Aggregation und Koordination von Ergebnissen.
-- **Entkopplung von Funktionen**: Sie entlasten die Datenknoten, die sich dann auf Datenverarbeitung und Speicherung konzentrieren können.
+- Large clusters: In large Elasticsearch clusters with many data nodes, coordinator nodes help distribute the load efficiently. 
+- Search query optimization: Improve response times for complex search queries by aggregating and coordinating results. 
+- Decoupling of functions: You relieve the load on the data nodes, which then focus on data processing and storage can concentrate. 
 
-## Konfiguration eines Coordinator Nodes
+## Configuration of a coordinator node
 
-Ein Coordinator Node wird durch die Konfiguration festgelegt, indem alle Rollen außer der Koordinationsrolle deaktiviert werden. In der Datei `elasticsearch.yml` könnte dies wie folgt aussehen:
+A Coordinator Node is specified through configuration by disabling all roles except the coordination role. 
+In the elasticsearch.yml file this might look like this: 
+
+
 
 ```yaml
 node.master: false
@@ -36,4 +42,4 @@ node.data: false
 node.ingest: false
 ```
 
-Der Knoten fungiert dann ausschließlich als Coordinator Node.
+# The node then acts exclusively as a coordinator node.
