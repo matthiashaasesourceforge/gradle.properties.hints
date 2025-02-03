@@ -6,7 +6,7 @@ Instead, safer methods such as environment variables or separate, unversioned co
 
 ---
 
-##Methods for Securing Sensitive Data
+## Methods for Securing Sensitive Data
 
 ### 1. Using Environment Variables
 
