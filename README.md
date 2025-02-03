@@ -14,22 +14,25 @@ Instead, safer methods such as environment variables or separate, unversioned co
 
 - **Linux/macOS:** 
   ```bash
+  export ARTIFACTORY_USER=YOURUSER
   export ARTIFACTORY_PASSWORD=YOURPASSWORD
   ```
   To make the variable permanent, add this line to your `~/.bashrc`, `~/.zshrc`, or `~/.bash_profile`.
 
 - **Windows:**
   - Open the Environment Variables section in the Control Panel.
-  - Create a new user or system variable:
+  - Create a new user or system variables:
+    - **Name:** `ARTIFACTORY_USER`
+    - **Value:** `YOURUSER`
     - **Name:** `ARTIFACTORY_PASSWORD`
-    - **Wert:** `YOURPASSWORD`
+    - **Value:** `YOURPASSWORD`
 
 #### Step 2: Edit `gradle.properties`
 Replace sensitive values references to the environment variables:
 
 ```properties
 artifactory_url=https://jfrog.devstack.vwgroup.com/artifactory
-artifactory_user=YOURUSERID
+artifactory_user=${ARTIFACTORY_USER}
 artifactory_password=${ARTIFACTORY_PASSWORD}
 configuration_location=
 server_port=
@@ -40,39 +43,19 @@ profile=local
 
 Make sure the environment variable is available before starting your build system.
 
----
-
-### 2. **Using a separate file**
-
-#### Step 1: Create a separate file
-Create a file `secrets.properties` containing the sensitive information: 
-```properties
-artifactory_password=YOURPASSWORD
+For example, go to the projects folder of an appropriate repository and try:
 ```
+devstack_eecost|event-transformer-backend $ gradle clean codegen assemble          
 
-#### Step 2: Edit `gradle.properties`
-Include separate file in `gradle.properties`:
-```properties
-artifactory_url=https://jfrog.devstack.vwgroup.com/artifactory
-artifactory_user=YOURUSERID
-configuration_location=
-server_port=
-profile=local
-
-# load the password from separate file
-include file:secrets.properties
-```
-
-#### Step 3: Exclusion from version control
-Add the file `secrets.properties` to the .gitignore to exclude it from version control.
-```plaintext
-secrets.properties
+BUILD SUCCESSFUL in 6s
+8 actionable tasks: 8 executed
 ```
 
 ---
 
-### 3. **Use of password management tools**
-Tools like **HashiCorp Vault**, **AWS Secrets Manager**, or **Azure Key Vault** enable secure storage and retrieval of passwords at runtime. Integration requires adjustments to the build or runtime process but provides the highest level of security.
+### 2. **Use of password management tools**
+Tools like **HashiCorp Vault**, **AWS Secrets Manager**, or **Azure Key Vault** enable secure storage and retrieval of passwords at runtime. 
+Integration requires adjustments to the build or runtime process but provides the highest level of security.
 
 ---
 
@@ -84,11 +67,11 @@ Using **environment variables** is often the simplest and most cross-platform ap
 
 # Secure Configuration for `gradle.properties`
 
----
 
 ---
 
 ---
+
 
 In diesem Projekt wird empfohlen, sensible Informationen wie Passwörter oder Tokens nicht direkt in der `gradle.properties`-Datei zu speichern. 
 
@@ -109,7 +92,9 @@ Stattdessen sollten sicherere Methoden wie Umgebungsvariablen oder separate, nic
 
 - **Windows:**
   - Öffne die "Umgebungsvariablen" im Systemsteuerungsbereich.
-  - Erstelle eine neue Benutzer- oder Systemvariable:
+  - Erstelle neue Benutzer- oder Systemvariablen:
+    - **Name:** `ARTIFACTORY_USER`
+    - **Wert:** `YOURUSER`
     - **Name:** `ARTIFACTORY_PASSWORD`
     - **Wert:** `YOURPASSWORD`
 
@@ -117,7 +102,7 @@ Stattdessen sollten sicherere Methoden wie Umgebungsvariablen oder separate, nic
 Ersetze sensible Werte durch Referenzen auf die Umgebungsvariablen:
 ```properties
 artifactory_url=https://jfrog.devstack.vwgroup.com/artifactory
-artifactory_user=YOURUSERID
+artifactory_user=${ARTIFACTORY_USER}
 artifactory_password=${ARTIFACTORY_PASSWORD}
 configuration_location=
 server_port=
@@ -128,39 +113,19 @@ profile=local
 
 Stelle sicher, dass die Umgebungsvariable vor dem Start deines Build-Systems verfügbar ist.
 
----
-
-### 2. **Verwendung einer separaten Datei**
-
-#### Schritt 1: Erstellen einer separaten Datei
-Lege eine Datei `secrets.properties` an, die die sensiblen Informationen enthält:
-```properties
-artifactory_password=dein_passwort
+zum Beispiel in ein Verzeichnis eines passenden Repository wechseln und testen:
 ```
+devstack_eecost|event-transformer-backend $ gradle clean codegen assemble          
 
-#### Schritt 2: Anpassen der `gradle.properties`
-Binde die separate Datei in `gradle.properties` ein:
-```properties
-artifactory_url=https://jfrog.devstack.vwgroup.com/artifactory
-artifactory_user=YOURUSERID
-configuration_location=
-server_port=
-profile=local
-
-# Lade das Passwort aus einer separaten Datei
-include file:secrets.properties
-```
-
-#### Schritt 3: Ausschluss aus der Versionskontrolle
-Füge die Datei `secrets.properties` zur `.gitignore` hinzu, um sie nicht in die Versionskontrolle aufzunehmen:
-```plaintext
-secrets.properties
+BUILD SUCCESSFUL in 6s
+8 actionable tasks: 8 executed
 ```
 
 ---
 
-### 3. **Verwendung von Passwort-Management-Tools**
-Tools wie **HashiCorp Vault**, **AWS Secrets Manager** oder **Azure Key Vault** ermöglichen die sichere Speicherung und Abfrage von Passwörtern zur Laufzeit. Die Integration erfordert Anpassungen am Build- oder Laufzeitprozess, bietet jedoch höchste Sicherheit.
+### 2. **Verwendung von Passwort-Management-Tools**
+Tools wie **HashiCorp Vault**, **AWS Secrets Manager** oder **Azure Key Vault** ermöglichen die sichere Speicherung und Abfrage von Passwörtern zur Laufzeit. 
+Die Integration erfordert Anpassungen am Build- oder Laufzeitprozess, bietet jedoch höchste Sicherheit.
 
 ---
 
