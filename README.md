@@ -1,4 +1,4 @@
-# Secure Configuration for `gradle.properties`
+# Secure Configuration for `gradle.properties` with outsourced `artifactory_user` and `artifactory_password`
 
 This project recommends not storing sensitive information such as passwords or tokens directly in the file `gradle.properties`.  
 
@@ -65,13 +65,12 @@ Using **environment variables** is often the simplest and most cross-platform ap
 - Regularly review the project's security configuration.
 - Rotate credentials in the event of a potential security incident.
 
-# Secure Configuration for `gradle.properties`
-
 
 ---
 
 ---
 
+# Sichere Konfiguration der `gradle.properties` mit ausgelagerten `artifactory_user` und `artifactory_password`
 
 In diesem Projekt wird empfohlen, sensible Informationen wie Passwörter oder Tokens nicht direkt in der `gradle.properties`-Datei zu speichern. 
 
