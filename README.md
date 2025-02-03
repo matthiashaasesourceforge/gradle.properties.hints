@@ -45,7 +45,7 @@ Make sure the environment variable is available before starting your build syste
 
 For example, go to the projects folder of an appropriate repository and try:
 ```
-devstack_eecost|event-transformer-backend $ gradle clean codegen assemble          
+$ gradle clean codegen assemble          
 
 BUILD SUCCESSFUL in 6s
 8 actionable tasks: 8 executed
