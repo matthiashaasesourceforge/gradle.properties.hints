@@ -14,8 +14,8 @@ Instead, safer methods such as environment variables or separate, unversioned co
 
 - **Linux/macOS:** 
   ```bash
-  export ARTIFACTORY_USER=YOURUSER
-  export ARTIFACTORY_PASSWORD=YOURPASSWORD
+  export ARTIFACTORY_USER=YOUR_USERID
+  export ARTIFACTORY_PASSWORD=YOUR_PASSWORD
   ```
   To make the variable permanent, add this line to your `~/.bashrc`, `~/.zshrc`, or `~/.bash_profile`.
 
@@ -23,9 +23,9 @@ Instead, safer methods such as environment variables or separate, unversioned co
   - Open the Environment Variables section in the Control Panel.
   - Create a new user or system variables:
     - **Name:** `ARTIFACTORY_USER`
-    - **Value:** `YOURUSER`
+    - **Value:** `YOUR_USERID`
     - **Name:** `ARTIFACTORY_PASSWORD`
-    - **Value:** `YOURPASSWORD`
+    - **Value:** `YOUR_PASSWORD`
 
 #### Step 2: Edit `gradle.properties`
 Replace sensitive values references to the environment variables:
@@ -85,6 +85,7 @@ Stattdessen sollten sicherere Methoden wie Umgebungsvariablen oder separate, nic
 
 - **Linux/macOS:** 
   ```bash
+  export ARTIFACTORY_USER=deine_userid
   export ARTIFACTORY_PASSWORD=dein_passwort
   ```
   Um die Variable dauerhaft zu setzen, füge diese Zeile in deine `~/.bashrc`, `~/.zshrc` oder `~/.bash_profile` ein.
@@ -93,9 +94,9 @@ Stattdessen sollten sicherere Methoden wie Umgebungsvariablen oder separate, nic
   - Öffne die "Umgebungsvariablen" im Systemsteuerungsbereich.
   - Erstelle neue Benutzer- oder Systemvariablen:
     - **Name:** `ARTIFACTORY_USER`
-    - **Wert:** `YOURUSER`
+    - **Wert:** `deine_userid`
     - **Name:** `ARTIFACTORY_PASSWORD`
-    - **Wert:** `YOURPASSWORD`
+    - **Wert:** `dein_passwort`
 
 #### Schritt 2: Anpassen der `gradle.properties`
 Ersetze sensible Werte durch Referenzen auf die Umgebungsvariablen:
