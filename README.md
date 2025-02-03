@@ -115,7 +115,7 @@ Stelle sicher, dass die Umgebungsvariable vor dem Start deines Build-Systems ver
 
 zum Beispiel in ein Verzeichnis eines passenden Repository wechseln und testen:
 ```
-devstack_eecost|event-transformer-backend $ gradle clean codegen assemble          
+$ gradle clean codegen assemble          
 
 BUILD SUCCESSFUL in 6s
 8 actionable tasks: 8 executed
